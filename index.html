@@ -1,279 +1,87 @@
 
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="Seeing Through the Conversation: Audio-Visual Speech Separation based on Diffusion Model" />
-  <meta name="keywords" content="Score-based generative models, Diffusion models, Speech separation, Audio-visual, Cross-attention" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Seeing Through the Conversation: Audio-Visual Speech Separation based on Diffusion Model</title>
-  <style>
-    audio {
-        width:100%;
-    }
-    th, td {
-        border: 1px solid gainsboro;
-        padding: 15px
-    }
-    table {
-        border-collapse: collapse;
-        outline: thin solid gray;
-    }
-    tbody {
-        outline: thin solid gainsboro;
-    }
-  </style>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  
-  <!-- mathjax -->
-  <script type="text/x-mathjax-config"> 
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } }); 
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <!--/ mathjax -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
- 
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>VMC</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+	    tex2jax: {
+	        inlineMath: [['$','$'], ['\\(','\\)']],
+	        processEscapes: true
+	    }
+	});
+    </script>
+  <script src="static/js/index.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="static/favicon_io/site.webmanifest">
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://mmai.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-    </div>
-  </div>
-</nav>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-3 publication-title">Seeing Through the Conversation:<br>Audio-Visual Speech Separation based on Diffusion Model</h1>
-          <div class="is-size-4 publication-authors">
-            <span class="author-block">
-              <a href="">Suyeon Lee</a><sup>*</sup>,</span>
-            <span class="author-block">
-              <a href="" target="_blank" rel="noopener noreferrer">Chaeyoung Jung</a><sup>*</sup>,</span>
-            <span class="author-block">
-              <a href="https://art-jang.github.io/" target="_blank" rel="noopener noreferrer">Youngjoon Jang</a>,</span>
-            <span class="author-block">
-              <a href="">Jaehun Kim</a>,</span>
-            <span class="author-block">
-              <a href="https://mm.kaist.ac.kr/joon/" target="_blank" rel="noopener noreferrer">Joon Son Chung</a>,</span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Korea Advanced Institute of Science and Technology, South Korea.</span>
-          </div>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="pdf-block"></span>
-                <a href="https://arxiv.org/abs/2310.19581" target="_blank" rel="noopener noreferrer">[pdf]</a>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5 publication-authors">
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            The objective of this work is to extract target speaker’s voice from a mixture of voices using visual cues. Existing works on audio-visual speech separation have demonstrated their performance with promising intelligibility, but maintaining naturalness remains a challenge. 
-            To address this issue, we propose AVDiffuSS, an audio-visual speech separation model based on a diffusion mechanism known for its capability in generating natural samples. For an effective fusion of the two modalities for diffusion, we also propose a cross-attention-based feature fusion mechanism. This mechanism is specifically tailored for the speech domain to integrate the phonetic information from audiovisual correspondence in speech generation. In this way, the fusion process maintains the high temporal resolution of the features, without excessive computational requirements. 
-            We demonstrate that the proposed framework achieves state-of-the-art results on two benchmarks, including VoxCeleb2 and LRS3, producing speech with notably better naturalness.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-  </div>
-</section>
-<!-- Demo Video -->
-<section class="section">
-  <div class="container is-max-desktop">
+  <section class="hero">
     <div class="hero-body">
-      <h2 class="title is-3">Demo Video</h2>
-      <p style="font-size:18px"> 
-        We show example separation results of our model (AVDiffuSS) with the visualization of input videos.
-        <br><b>&bull; Overlapped Speech</b>: Synthetic mixtures of speech from VoxCeleb2 dataset.
-        <br><b>&bull; Prediction 1</b>: Separated result using the visual information from the left speaker.
-        <br><b>&bull; Prediction 2</b>: Separated result using the visual information from the right speaker.
-      </p>
-      <p> <br><br> </p>
-      <p>
+      <div class="container is-max-desktop">
         <div class="columns is-centered">
-          <div class="column">
-            <div class="columns is-centered">
-              <h2 class="title is-5">Overlapped Speech</h2>
+          <div class="column has-text-centered">
+            <!-- <h1 class="xtitle is-1 publication-title" style="font-size: 31px;"><strong>FlowAuvis</strong></h1><br> -->
+            <h1 class="xtitle is-1 publication-title" style="font-size: 45px;">FlowAuvis: Efficient audio visual speech enhancement models using a conditional flow matching</h1>
+            <div class="is-size-5 publication-authors">
             </div>
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mm/overlap.mp4" type="video/mp4" /></video>
+            <br>
+            <!-- Institution & Conference -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Anonymous<small><sup>*</sup></small></span>
             </div>
-          </div>
-          <div class="column">
-            <div class="columns is-centered">
-              <h2 class="title is-5">Prediction 1</h2>
-            </div>
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mm/pred1.mp4" type="video/mp4" /></video>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block" style="font-size: 24px;">Under review</span>
             </div>
           </div>
-          <div class="column">
-            <div class="columns is-centered">
-              <h2 class="title is-5">Prediction 2</h2>
-            </div>
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mm/pred2.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-        </div>
-      </p>
-      <p>
-        <div class="columns is-centered">
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/ff/overlap.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/ff/pred1.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/ff/pred2.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-        </div>
-      </p>
-      <p>
-        <div class="columns is-centered"> 
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mf/overlap.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mf/pred1.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-          <div class="column">
-            <div class="content">
-              <video controls><source src="assets/avdiffuss/demo_video/mf/pred2.mp4" type="video/mp4" /></video>
-            </div>
-          </div>
-        </div>
-      </p>
-    </div>
-  </div>
-</section>
-<!-- Demo Video -->
-<!-- Demo Audio -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Demo Audio</h2>
-        <p>
-          Below audio samples are the comparison of separated outputs obtained by using the same input for the three models: AVDiffuSS(ours), VisualVoice [1], and DiffSep [2]. VisualVoice [1] is an audio-visual speech separation model, which is NOT a diffusion-based model. DiffSep [2] is an audio-only diffusion-based speech separation model.<br><br>
-        </p>
-        <table style="width:100%; text-align:center">
-        <thead>
-          <tr>
-            <th width="7%" style="vertical-align:middle"><center>Type of<br>Audio</center></th>
-            <th width="18%" style="vertical-align:middle"><center>Input</center></th>
-            <th width="3%" style="vertical-align:middle"><center>Pred</center></th>
-            <th width="18%" style="vertical-align:middle"><center>GT</center></th>
-            <th width="18%" style="vertical-align:middle"><center>AVDiffuSS(Ours)</center></th>
-            <th width="18%" style="vertical-align:middle"><center>VisualVoice [1]</center></th>
-            <th width="18%" style="vertical-align:middle"><center>DiffSep [2]</center></th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Demo Audio -->
-<!--Architecture -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Architecture</h2>
-        <center>
-
-        </center>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">References</h2>
-        <div class="content has-text-justified">
-          <p>
-            [1] Gao, Ruohan, and Kristen Grauman. "Visualvoice: Audio-visual speech separation with cross-modal consistency." 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). IEEE, 2021.
-          </p>
-          <p>
-            [2] Scheibler, Robin, et al. "Diffusion-based generative speech source separation." ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2023.
-          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- -->
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>This website is based on the <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies website template</a>,
-            which is licensed under a <a rel="noopener noreferrer" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+                
