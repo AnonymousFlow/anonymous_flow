@@ -25,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>FlowAuVis</title>
+  <title>FlowAVSE</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -38,8 +38,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- <h1 class="xtitle is-1 publication-title" style="font-size: 31px;"><strong>FlowAuvis</strong></h1><br> -->
-            <h1 class="xtitle is-1 publication-title" style="font-size: 45px;">FlowAuvis: Efficient audio visual speech enhancement models using a conditional flow matching</h1>
+            <!-- <h1 class="xtitle is-1 publication-title" style="font-size: 31px;"><strong>FlowAVSE</strong></h1><br> -->
+            <h1 class="xtitle is-1 publication-title" style="font-size: 45px;">FlowAVSE: Efficient audio visual speech enhancement models using a conditional flow matching</h1>
             <div class="is-size-5 publication-authors">
             </div>
             <br>
@@ -66,10 +66,10 @@
         <div class="content has-text-justified">
           <p>
             The goal of this study is to extract target speech from a mixture of sounds. While previous diffusion-based methods have exhibited exceptional quality, they suffer from heavy computations and slow inference speeds. 
-	    To address this issue, in this paper, we present FlowAuVis, which is structured considering efficiency and can generate clearly isolated target speech. Specifically, we leverages a conditional flow matching algorithm with a single sampling step. 
+	    To address this issue, in this paper, we present FlowAVSE, which is structured considering efficiency and can generate clearly isolated target speech. Specifically, we leverages a conditional flow matching algorithm with a single sampling step. 
 	    Additionally, we streamline the inherent U-net architecture of previous diffusion models to further enhance efficiency. 
 	    Experimental results indicate that our framework achieves an inference speed approximately 22 times faster than our baseline diffusion model, demonstrating outstanding performance. 
-	    Our findings highlight the exceptional suitability of FlowAuVis for speech enhancement tasks and real-world scenarios, effectively balancing accuracy and speed.
+	    Our findings highlight the exceptional suitability of FlowAVSE for speech enhancement tasks and real-world scenarios, effectively balancing accuracy and speed.
           </p>
         </div>
       </div>
@@ -85,14 +85,14 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Demo Audio</h2>
         <p>
-          Below audio samples are the comparison of enhanced outputs obtained by using the same input for the four models: FlowAuVis(ours), AVDiffuSS [1], AV-Gen [2], and StoRM [3]. StoRM [3] is an audio-only diffusion-based speech enhancement model. It seems all audio is enhancing mix speech well since enhancement task is not too difficult. However, our model is good at denoising noises and detecting the target speech for whole time. <br><br>
+          Below audio samples are the comparison of enhanced outputs obtained by using the same input for the four models: FlowAVSE(ours), AVDiffuSS [1], AV-Gen [2], and StoRM [3]. StoRM [3] is an audio-only diffusion-based speech enhancement model. It seems all audio is enhancing mix speech well since enhancement task is not too difficult. However, our model is good at denoising noises and detecting the target speech for whole time. <br><br>
         </p>
         <table style="width:100%; text-align:center">
         <thead>
           <tr>
             <th width="18%" style="vertical-align:middle"><center>Mix audio</center></th>
             <th width="18%" style="vertical-align:middle"><center>Ground Truth</center></th>
-            <th width="18%" style="vertical-align:middle"><center>FlowAuVis(Ours)</center></th>
+            <th width="18%" style="vertical-align:middle"><center>FlowAVSE(Ours)</center></th>
             <th width="18%" style="vertical-align:middle"><center>AVDiffuSS [1]</center></th>
             <th width="18%" style="vertical-align:middle"><center>AV-Gen [2]</center></th>
           </tr>
