@@ -65,11 +65,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The goal of this study is to extract target speech from a mixture of sounds. While previous diffusion-based methods have exhibited exceptional quality, they suffer from heavy computations and slow inference speeds. 
-	    To address this issue, in this paper, we present FlowAVSE, which is structured considering efficiency and can generate clearly isolated target speech. Specifically, we leverages a conditional flow matching algorithm with a single sampling step. 
-	    Additionally, we streamline the inherent U-net architecture of previous diffusion models to further enhance efficiency. 
-	    Experimental results indicate that our framework achieves an inference speed approximately 22 times faster than our baseline diffusion model, demonstrating outstanding performance. 
-	    Our findings highlight the exceptional suitability of FlowAVSE for speech enhancement tasks and real-world scenarios, effectively balancing accuracy and speed.
+            This work proposes an efficient method to enhance the quality of corrupted speech signals by leveraging both acoustic and visual cues. 
+            While existing diffusion-based approaches have demonstrated remarkable quality, their applicability is limited by slow inference speeds and computational complexity. 
+	    To address this issue, we present FlowAVSE which enhances the inference speed and reduces the number of learnable parameters without degrading the output quality. 
+	    In particular, we employ a conditional flow matching algorithm that enables the generation of high-quality speech in a single sampling step. 
+	    Moreover, we increase efficiency by optimizing the underlying U-net architecture of diffusion-based systems. 
+	    Our experiments demonstrate that FlowAVSE achieves 22 times faster inference speed and reduces the model size by half while maintaining the output quality.
           </p>
         </div>
       </div>
